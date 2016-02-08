@@ -1,0 +1,1 @@
+create index IX_C3C13DB7 on slnc_Tramite (apellido);
