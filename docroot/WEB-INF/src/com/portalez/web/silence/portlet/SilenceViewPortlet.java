@@ -36,11 +36,9 @@ public class SilenceViewPortlet extends MVCPortlet {
 		ThemeDisplay themeDisplay = (ThemeDisplay) actionRequest
 				.getAttribute(WebKeys.THEME_DISPLAY);
 		
-		String nombre = ParamUtil.getString(actionRequest,
-				"nombre");
+		String nombre = ParamUtil.getString(actionRequest, "nombre");
 		
-		String apellido = ParamUtil.getString(actionRequest,
-				"apellido");
+		String apellido = ParamUtil.getString(actionRequest, "apellido");
 		
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(Tramite.class.getName(), actionRequest);
 		
@@ -63,28 +61,30 @@ public class SilenceViewPortlet extends MVCPortlet {
 			
 			WorkflowDefinitionLink workflowDefinitionLink = null;
 			
-			try {
-				
-				workflowDefinitionLink = WorkflowDefinitionLinkLocalServiceUtil
-						.getDefaultWorkflowDefinitionLink(
-								themeDisplay.getCompanyId(),
-								Tramite.class.getName(), 0, 0);
-				
-			} catch (Exception e) {
-				if (e instanceof NoSuchWorkflowDefinitionLinkException) {
-					SessionMessages.add(actionRequest.getPortletSession(),
-							"workflow-not-enabled");
-				}
-				e.printStackTrace();
-			}
+//			try {
+//				
+//				workflowDefinitionLink = WorkflowDefinitionLinkLocalServiceUtil
+//						.getDefaultWorkflowDefinitionLink(
+//								themeDisplay.getCompanyId(),
+//								Tramite.class.getName(), 0, 0);
+//				
+//			} catch (Exception e) {
+//				if (e instanceof NoSuchWorkflowDefinitionLinkException) {
+//					SessionMessages.add(actionRequest.getPortletSession(),
+//							"workflow-not-enabled");
+//				}
+//				e.printStackTrace();
+//			}
 			// checking workflow defintion is enabled to tramite asset or not
-			if (tramite != null && workflowDefinitionLink != null) {
+			if (tramite != null /*&& workflowDefinitionLink != null*/) {
+				
 				// add feedback asset in asset entry table
 //				AssetEntryLocalServiceUtil.updateEntry(
 //						themeDisplay.getUserId(), tramite.getGroupId(),
 //						Feedback.class.getName(), tramite.getFeedbackId(),
 //						serviceContext.getAssetCategoryIds(),
 //						serviceContext.getAssetTagNames());
+				
 				// start workflow instance to tramite.
 				WorkflowHandlerRegistryUtil.startWorkflowInstance(
 						tramite.getCompanyId(), tramite.getGroupId(),

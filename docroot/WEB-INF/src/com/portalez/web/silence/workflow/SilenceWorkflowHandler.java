@@ -44,17 +44,17 @@ public class SilenceWorkflowHandler extends BaseWorkflowHandler {
 		
 		tramite = TramiteLocalServiceUtil.updateTramite(tramite);
 		
-		if (status == WorkflowConstants.STATUS_APPROVED) {
-			AssetEntryLocalServiceUtil.updateVisible(Tramite.class.getName(),
-					resourcePrimKey, true);
-		} else {
-			AssetEntryLocalServiceUtil.updateVisible(Tramite.class.getName(),
-					resourcePrimKey, false);
-		}
+//		if (status == WorkflowConstants.STATUS_APPROVED) {
+//			AssetEntryLocalServiceUtil.updateVisible(Tramite.class.getName(),
+//					resourcePrimKey, true);
+//		} else {
+//			AssetEntryLocalServiceUtil.updateVisible(Tramite.class.getName(),
+//					resourcePrimKey, false);
+//		}
 		
 		return tramite;
 
     }
 
-	public static final String CLASS_NAME = SilenceWorkflowHandler.class.getName();
+	public static final String CLASS_NAME = Tramite.class.getName();
 }
